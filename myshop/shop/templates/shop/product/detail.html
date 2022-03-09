@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="رستوران فرشاد" />
+        <meta name="author" content="محمدرضا حسینی" />
+        <title>رستوران فرشاد</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'shop/assets/img/2.jpeg' %}" />
+        <!-- Font Awesome icons (free version)-->
+        <!-- <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script> -->
+        <!-- Simple line icons-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <!-- Google fonts-->
+        <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" /> -->
+        <link href='https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css' rel='stylesheet' type='text/css'>
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'shop/css/styles.css' %}" rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'shop/css/persianstyle.css' %}">
+    </head>
+    <style>
+        .custom-select {
+            width:150px;
+            background-color: #ecb807;
+            border-color: transparent;
+            border-radius: 10px;
+        }
+
+        .custom-label {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+   <body>
+    <div class="container mt-3">
+        <div class="row text-center">
+            <h1><a class="browncolor text-decoration-none" href="{% url 'shop:home' %}">برای رفتن به صفحه اصلی کلیک کنید</a></h1>
+                <h5 class="mb-4">
+                     {% with total_items=cart|length %}
+                    {% if total_items > 0 %}
+                    سبد خرید:
+                    <a class="text-decoration-none p-1 bg-warning text-light rounded-3" href="{% url 'cart:cart_detail' %}">
+                    {{ total_items }} عدد
+                    {{ cart.get_total_price }}تومان
+                    </a>
+                    {% else %}
+                    سبد خرید شما خالی است.
+                    {% endif %}
+                    {% endwith %}
+                </h5>
+        </div>
+        <div class="d-flex justify-content-center ">
+            <img class="bd-placeholder-img rounded-circle imgborderstyles" width="290" height="290" src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">
+            
+              
+            
+        </div>
+        <div class="text-center mt-5">
+            <h1>{{ product.name }}</h1>
+            <h2>
+            <a class="text-decoration-none" href="{{ product.category.get_absolute_url }}">
+            {{ product.category }}
+            </a>
+            </h2>
+            <p class="price">{{ product.price }}تومان</p>
+            <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                {% csrf_token %}
+
+
+                <tr><th><label for="id_quantity" class="custom-label">تعداد:</label></th><td><select class="custom-select" name="quantity" id="id_quantity">
+                          <option value="1">1</option>
+
+                          <option value="2">2</option>
+
+                          <option value="3">3</option>
+
+                          <option value="4">4</option>
+
+                          <option value="5">5</option>
+
+                          <option value="6">6</option>
+
+                          <option value="7">7</option>
+
+                          <option value="8">8</option>
+
+                          <option value="9">9</option>
+
+                          <option value="10">10</option>
+
+                          <option value="11">11</option>
+
+                          <option value="12">12</option>
+
+                          <option value="13">13</option>
+
+                          <option value="14">14</option>
+
+                          <option value="15">15</option>
+
+                          <option value="16">16</option>
+
+                          <option value="17">17</option>
+
+                          <option value="18">18</option>
+
+                          <option value="19">19</option>
+
+                          <option value="20">20</option>
+
+                    </select><input type="hidden" name="override" value="False" id="id_override"></td></tr>
+
+
+                <input class="form-control bg-warning mt-3" type="submit" value="افزودن به سبد خرید">
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        
+ 
+   </body>
+</html>

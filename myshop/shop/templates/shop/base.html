@@ -1,0 +1,227 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="رستوران فرشاد" />
+        <meta name="author" content="محمدرضا حسینی" />
+        <title>رستوران فرشاد</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'shop/assets/img/2.jpeg' %}" />
+        <!-- Font Awesome icons (free version)-->
+        <!-- <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script> -->
+        <!-- Simple line icons-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <!-- Google fonts-->
+        <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" /> -->
+        <link href='https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css' rel='stylesheet' type='text/css'>
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'shop/css/styles.css' %}" rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'shop/css/persianstyle.css' %}">
+        <meta name="google-site-verification" content="3rj7Jc45c0-03Bgd6ksBEu_-SOzRbjz4VtCGZoZifJI" />
+    </head>
+    <body id="page-top">
+    {% include 'shop/messages.html' %}
+        <div class="divTop pt-3 pb-3 bg-brown text-light d-flex justify-content-around">
+            {% for item in homeTitle %}
+            <h4>{{ item.title }}</h4>
+            {% endfor %}
+            <div id="timer"></div>
+        </div>
+
+        <!-- Navigation-->
+        <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+        <nav class="bg-brown" id="sidebar-wrapper">
+            <ul class="text-center sidebar-nav mt-5 pt-4">
+                <li class="sidebar-brand"><a href="#page-top">رستوران فرشاد</a></li>
+                <li class="sidebar-nav-item"><a href="#page-top">خانه</a></li>
+                <li class="sidebar-nav-item"><a href="#about">درباره ما</a></li>
+                <li class="sidebar-nav-item"><a href="#services">خدمات ما</a></li>
+                <li class="sidebar-nav-item"><a href="#portfolio">پرفروش ترین ها</a></li>
+                <li class="sidebar-nav-item"><a href="#contact">ارتباط با ما</a></li>
+                <li class="sidebar-nav-item"><a href="{% url 'shop:product_list' %}">ثبت سفارش</a></li>
+                <li class="sidebar-nav-item"><a href="{% url 'shop:employment' %}">فرم همکاری با رستوران</a></li>
+            </ul>
+        </nav>
+        <!-- Header-->
+        {% for item in homeSection1 %}
+        <header style="min-height: 30rem;
+  position: relative;
+  display: table;
+  width: 100%;
+  height: 100%;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url('{{ item.image.url }}');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;" class="masthead d-flex align-items-center" >
+            <div class="container px-4 px-lg-5 text-center">
+                <h1 class="mb-1">{{ item.title }}</h1>
+                <h3 class="mb-5"><em>{{ item.param }}</em></h3>
+                <a class="btn btn-warning btn-xl" href="{% url 'shop:product_list' %}">ثبت سفارش</a>
+            </div>
+        </header>
+        {% endfor %}
+        <!-- About-->
+        <section class="content-section bg-light" id="about">
+            <div class="container px-4 px-lg-5 text-center">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-10">
+                        <img src="{% static 'shop/assets/img/2.jpeg' %}" width="290" alt="لوگو رستوران فرشاد">
+                        {% for item in homeSection2 %}
+                        <h2>{{ item.title }}</h2>
+                        <p class="lead mb-5 fw-bold">
+                            <span>>></span> {{ item.param }} <span><<</span>
+                            <!-- <a href="https://unsplash.com/">Unsplash</a>
+                            ! -->
+                        </p>
+                        {% endfor %}
+
+                        <!-- <a class="btn btn-dark btn-xl" href="#services">What We Offer</a> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Services-->
+        <section class="content-section bg-brown text-white text-center" id="services">
+            <div class="container px-4 px-lg-5">
+                <div class="content-section-heading">
+                    <h3 class="text-secondary mb-0">خدمات</h3>
+                    <h2 class="mb-5 text-warning">خدماتی که مسئول ارائه آن هستیم</h2>
+                </div>
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="fas fa-shipping-fast"></i></span>
+                        <h4><strong>ارسال اکسپرس</strong></h4>
+                        <p class="text-faded mb-0">ارسال سریع و بسته بندی کامل</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="fas fa-utensils"></i></span>
+                        <h4><strong>غذای گرم </strong></h4>
+                        <p class="text-faded mb-0">تحویل غذای گرم به همراه دورچین </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="fas fa-wallet"></i></span>
+                        <h4><strong>بهترین کیفیت</strong></h4>
+                        <p class="text-faded mb-0">
+                            هزینه کم و بهترین کیفیت
+
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <span class="service-icon rounded-circle mx-auto mb-3"><i class="fas fa-address-card"></i></span>
+                        <h4><strong>کادر مجرب</strong></h4>
+                        <p class="text-faded mb-0">کادر مجرب و انتقاد پذیر</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Callout-->
+        {% for item in homeSection3 %}
+        <section style="padding: 15rem 0;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url('{{ item.image.url }}');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;" class="callout">
+            <div class="container px-4 px-lg-5 text-center">
+                <h2 class="mx-auto mb-5">
+                    طعم به یادماندنی غذای ایرانی
+                </h2>
+                <a class="btn btn-warning btn-xl" href="{% url 'shop:product_list' %}">ثبت سفارش</a>
+            </div>
+        </section>
+        {% endfor %}
+        <!-- Portfolio-->
+        <section id="portfolio">
+            <div class="container text-center">
+                <div class="content-section-heading text-center">
+                    <h3 class="text-secondary mb-0">محصولات</h3>
+                    <h2 class="mb-5">پرفروش ترین ها</h2>
+                </div>
+                
+
+
+                    <div class="row">
+                        {% for item in homeSection4 %}
+             
+                    <div class="col-lg-4"  >
+                        <img class="bd-placeholder-img rounded-circle imgborderstyles" width="280" height="280" src="{{ item.image.url }}">
+
+              <br><br>
+                      <h2>{{ item.title }}</h2>
+                      
+              
+                    </div><!-- /.col-lg-4 -->
+
+                      {% endfor %}
+                    </div>
+                
+            </div>
+        </section>
+        <!-- Call to Action-->
+        <section class="content-section bg-brown text-white">
+            <div class="container px-4 px-lg-5 text-center">
+                <h2 class="mb-4">راه های ارتباطی با ما</h2>
+                <hr>
+                <p>شما میتوانید با شماره های زیر تماس بگیرید و اگر پیشنهاد یا انتقادی دارین از طریق فرم زیر برای ما ارسال کنید</p>
+                <p>شماره رستوران : </p>
+                <p>۰۸۶-۴۲۴۶۳۵۰۰</p>
+                <p>۰۸۶-۴۲۴۶۳۵۴۳</p>
+                <p>شماره مدیریت</p>
+                <p>۰۹۱۲۴۵۵۱۱۸۵</p>
+                <p>آدرس‌ : </p>
+                <p>ساوه-بلوار آزادی.بین آزادی ۲۰ و ۲۲</p>
+                <hr>
+                <form method="POST">
+                    {% csrf_token %}
+                  <div class="mb-3">
+                    <p   class="form-label">شماره تماس</p>
+                    <input name="phone" required="required" class="form-control">
+<!--                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>-->
+                  </div>
+                  <div class="mb-3">
+                    <p class="form-label">نظر شما</p>
+                      <textarea name="subject" required="required" type="text" class="form-control" ></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-warning">ثبت نظر</button>
+                </form>
+<!--                <a class="btn btn-xl btn-light me-4" href="#!">Click Me!</a>-->
+<!--                <a class="btn btn-xl btn-dark" href="#!">Look at Me!</a>-->
+            </div>
+        </section>
+        <!-- Map-->
+        <div class="map" id="contact">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d700378.6224074999!2d50.33224968546851!3d35.36812660316177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f929764450568f3%3A0x1b5bca1f182e2b62!2sFarshad%20Restaurant!5e0!3m2!1sen!2sde!4v1627360704416!5m2!1sen!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <!-- Footer-->
+        <footer class="footer text-center">
+            <div class="container px-4 px-lg-5">
+                <ul class="list-inline mb-5">
+                    <li class="list-inline-item">
+                        <a style="color: #813A16;" class="social-link rounded-circle bg-warning" href="https://www.instagram.com/farshadrestaurant/"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <!-- <li class="list-inline-item">
+                        <a class="social-link rounded-circle text-white mr-3" href="#!"><i class="icon-social-twitter"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="social-link rounded-circle text-white" href="#!"><i class="icon-social-github"></i></a>
+                    </li> -->
+                </ul>
+                <p class="text-muted small">تمامی حقوق این سایت متعلق به <strong>رستوران فرشاد</strong> میباشد.</p>
+                <hr>
+                <p>توسعه دهنده <strong>محمدرضا حسینی</strong></p>
+                <hr>
+                <p>ارتباط با توسعه دهنده : ۰۹۰۵۱۴۴۱۱۳۲</p>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'shop/js/scripts.js' %}"></script>
+    </body>
+</html>

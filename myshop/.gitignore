@@ -1,0 +1,8 @@
+venv/
+./venv/
+media/
+*.sqlite3
+liara.json
+liara_nginx.conf
+.idea
+./.idea

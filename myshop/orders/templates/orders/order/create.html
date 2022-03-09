@@ -1,0 +1,189 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="رستوران فرشاد" />
+        <meta name="author" content="محمدرضا حسینی" />
+        <title>رستوران فرشاد</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'shop/assets/img/2.jpeg' %}" />
+        <!-- Font Awesome icons (free version)-->
+        <!-- <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script> -->
+        <!-- Simple line icons-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <!-- Google fonts-->
+        <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" /> -->
+        <link href='https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css' rel='stylesheet' type='text/css'>
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'shop/css/styles.css' %}" rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'shop/css/persianstyle.css' %}">
+        <style>
+.form {
+  background-color: #813A16;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 20px;
+  width: 320px;
+}
+
+
+
+
+
+.input-container {
+  height: 50px;
+  position: relative;
+  width: 100%;
+}
+
+.ic1 {
+  margin-top: 40px;
+}
+
+.ic2 {
+  margin-top: 30px;
+}
+
+.input {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+}
+
+.cut {
+  background-color: #15172b;
+  border-radius: 10px;
+  height: 20px;
+  left: 20px;
+  position: absolute;
+  top: -20px;
+  transform: translateY(0);
+  transition: transform 200ms;
+ 
+}
+
+
+
+.input:focus ~ .cut,
+.input:not(:placeholder-shown) ~ .cut {
+  transform: translateY(8px);
+}
+
+.placeholder {
+  color: white;
+  font-family: inherit;
+  left: 20px;
+  line-height: 14px;
+  pointer-events: none;
+  position: absolute;
+  transform-origin: 0 50%;
+  transition: transform 200ms, color 200ms;
+  top: 20px;
+}
+
+.input:focus ~ .placeholder,
+.input:not(:placeholder-shown) ~ .placeholder {
+  transform: translateY(-30px) translateX(10px) scale(0.75);
+}
+
+.input:not(:placeholder-shown) ~ .placeholder {
+  color: white;
+}
+
+.input:focus ~ .placeholder {
+  color: #dc2f55;
+}
+
+.submit {
+  background-color: #ecb807;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  margin-top: 38px;
+  text-align: center;
+  width: 100%;
+}
+
+.submit:active {
+  background-color: #ecb807;
+}
+        </style>
+    </head>
+  <body>
+    <div class="container mt-3">
+        <div class="row text-center">
+            <h1><a class="browncolor text-decoration-none" href="{% url 'shop:home' %}">برای رفتن به صفحه اصلی کلیک کنید</a></h1>
+                
+        </div>
+        <br><br><br>
+        <div class="card mb-5">
+            <h3 class="text-center">فاکتور شما تا الان :</h3>
+            <ul class="list-group text-center">
+            {% for item in cart %}
+            <li class="list-group-item">
+            <h5>{{ item.quantity }} {{ item.product.name }}
+              {{ item.total_price }}تومان</h5>
+            </li>
+            {% endfor %}
+            </ul>
+            <h3 class="text-center">مجموع خرید شما: {{ cart.get_total_price }}تومان</h3>
+            
+            
+        </div>
+         
+        <div>
+            <h3>اگر از خرید خود مطمئن هستین و سفارش شما تکمیل است فرم را پر کنید و روی دکمه ارسال سفارش کلیک کنید.</h3>
+            <br><br>
+            <form class="d-flex justify-content-center"  method="post">
+                {% csrf_token %}
+                <br><br>
+                <div class="form">
+                    <div class="input-container ic1">
+                      <input class="input" name="first_name" maxlength="50" required id="id_first_name" type="text" placeholder=" " />
+                      <div class="cut"></div>
+                      <label for="id_first_name" class="placeholder">نام</label>
+                    </div>
+                    <div class="input-container ic2">
+                      <input  class="input" type="text" placeholder=" " name="last_name" maxlength="50" required id="id_last_name"/>
+                      <div class="cut"></div>
+                      <label for="id_last_name" class="placeholder">نام خانوادگی</label>
+                    </div>
+                    <div class="input-container ic2">
+                      <input  class="input" type="text" placeholder=" " name="phone" maxlength="50" required id="id_phone"/>
+                      <div class="cut cut-short"></div>
+                      <label for="id_phone" class="placeholder">شماره تماس</label>
+                    </div>
+                    <div class="input-container ic2">
+                        <textarea style="height: 100px;"   class="input" type="" placeholder=" "  name="address" maxlength="250" required id="id_address"></textarea>
+                        <div class="cut cut-short"></div>
+                        <label for="id_address" class="placeholder">آدرس</label>
+                    </div>
+                    <br><br>
+                    
+                    <button type="text" class="submit">ثبت نهایی اطلاعات و ارسال سفارش</button>
+                  </div>
+                </form>
+        </div>
+        
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+
+
+  </body>
+</html>
