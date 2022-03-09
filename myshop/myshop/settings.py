@@ -86,27 +86,7 @@ DATABASES = {
 }
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'res',
-#         'USER': 'postgres',
-#         'PASSWORD': 'Momali937',
-#         'HOST': 'sajaddb',
-#
-#     }
-# }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'farshad',
-#         'USER': 'postgres',
-#         'PASSWORD': 'Mamali937',
-#         'HOST': 'farshad-data',
-#
-#     }
-# }
 
 
 # Password validation
